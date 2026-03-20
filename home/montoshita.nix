@@ -61,7 +61,6 @@ in
   # ══════════════════════════════════════════════════════════════════════════════
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
-  nixpkgs.config.allowUnfree = true;
 
   # ══════════════════════════════════════════════════════════════════════════════
   # SECCIÓN 2: PAQUETES
@@ -74,9 +73,9 @@ in
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    userName  = gitUser.name;
-    userEmail = gitUser.email;
-    extraConfig = {
+    settings = {
+      user.name  = gitUser.name;
+      user.email = gitUser.email;
       init.defaultBranch = "main";
       pull.rebase         = true;
       credential.helper   = "libsecret";
