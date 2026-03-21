@@ -1,0 +1,5 @@
+# .envrc - Direnv configuration for automatic development environment loading
+# Copia este archivo a la raíz de tu proyecto y renómbralo a .envrc
+# Luego ejecuta: direnv allow
+
+use flake
