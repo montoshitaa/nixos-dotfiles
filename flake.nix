@@ -24,7 +24,7 @@
         {
           home-manager.useGlobalPkgs = true;   # comparte pkgs del sistema
           home-manager.useUserPackages = true;  # instala paquetes en el perfil del usuario
-          home-manager.backupCommand = "rm -f";  # Eliminar archivos en conflicto, no hacer backup
+          home-manager.backupFileExtension = "backup";   # Eliminar archivos en conflicto, no hacer backup
           home-manager.users.montoshita = import ./home/montoshita.nix;
         }
       ];
