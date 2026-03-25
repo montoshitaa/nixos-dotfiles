@@ -29,6 +29,7 @@ let
     # Multimedia
     spotify
     firefox
+    onlyoffice-desktopeditors
 
     # Networking
     wireshark
@@ -51,6 +52,7 @@ let
     blur-my-shell
     just-perfection
     auto-accent-colour
+    arcmenu
   ];
 
   # [EXTENSIONES GNOME] - UUIDs para activar en dconf
