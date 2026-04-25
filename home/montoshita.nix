@@ -154,8 +154,16 @@ in
       gpg.format          = "ssh";
       user.signingkey     = "~/.ssh/id_ed25519.pub";
       commit.gpgsign      = true;
+      gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
     };
   };
+
+  # ══════════════════════════════════════════════════════════════════════════════
+  # SECCIÓN 3.5: ARCHIVO DE FIRMANTES SSH PERMITIDOS
+  # ══════════════════════════════════════════════════════════════════════════════
+  xdg.configFile."git/allowed_signers".text = ''
+    ${gitUser.email} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDvbHIaRrYv9EesUpg0cnwwY9qbvyzmHjGmHANdvgKNw
+  '';
 
   # ══════════════════════════════════════════════════════════════════════════════
   # SECCIÓN 4: DIRENV

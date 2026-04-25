@@ -1,0 +1,9 @@
+# NixOS
+result/
+result-*
+
+# Editor
+.vscode/
+*.swp
+*.swo
+*~
