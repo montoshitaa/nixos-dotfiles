@@ -17,7 +17,7 @@
   users.users.montoshita = {
     isNormalUser = true;
     description  = "Kristel Montoya";
-    extraGroups  = [ "networkmanager" "wheel" "docker" ];
+    extraGroups  = [ "networkmanager" "wheel" "docker" "dialout" "video" "render" "audio" ];
     group        = "users";
     shell        = pkgs.zsh;
   };
@@ -32,6 +32,12 @@
   # [4] RED
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [];  # Sin puertos expuestos
+  };
+
 
   # ═══════════════════════════════════════════════════════════════════════════
   # LOCALIZACIÓN E IDIOMA

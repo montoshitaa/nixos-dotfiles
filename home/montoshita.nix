@@ -42,6 +42,11 @@ let
     lazygit                     # Git TUI
     fastfetch
     tldr
+    arduino-ide
+
+  # Seguridad
+    mullvad-vpn
+
   ];
 
   # [EXTENSIONES GNOME] - Paquetes a instalar
@@ -146,6 +151,9 @@ in
       init.defaultBranch  = "main";
       pull.rebase         = true;
       credential.helper   = "libsecret";
+      gpg.format          = "ssh";
+      user.signingkey     = "~/.ssh/id_ed25519.pub";
+      commit.gpgsign      = true;
     };
   };
 
