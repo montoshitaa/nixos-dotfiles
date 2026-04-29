@@ -25,6 +25,8 @@ let
     mongodb-compass             # Cliente visual para MongoDB
     #postman                     # Testing de APIs
     dbeaver-bin                 # Database manager
+    docker                      # Containerización
+    docker-compose              # Orquestación de contenedores
 
     # Multimedia
     spotify
@@ -43,6 +45,7 @@ let
     fastfetch
     tldr
     arduino-ide
+
 
   # Seguridad
     mullvad-vpn

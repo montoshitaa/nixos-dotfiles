@@ -17,7 +17,7 @@
   users.users.montoshita = {
     isNormalUser = true;
     description  = "Kristel Montoya";
-    extraGroups  = [ "networkmanager" "wheel" "docker" "dialout" "video" "render" "audio" ];
+    extraGroups  = [ "networkmanager" "wheel" "docker" "dialout" "video" "render" "audio" "dialout" ];
     group        = "users";
     shell        = pkgs.zsh;
   };
