@@ -14,6 +14,8 @@ let
 
   # [PAQUETES] - Aplicaciones del usuario y herramientas de desarrollo
   userPackages = with pkgs; [
+    gsettings-desktop-schemas
+    gtk3
     # Editores e IDEs
     vscode
     #jetbrains.idea-community    # IDE para Java
@@ -27,6 +29,11 @@ let
     dbeaver-bin                 # Database manager
     docker                      # Containerización
     docker-compose              # Orquestación de contenedores
+    antigravity
+    #mysql-workbench
+    opencode
+    pgmodeler
+
 
     # Multimedia
     spotify
@@ -133,9 +140,12 @@ in
   # ══════════════════════════════════════════════════════════════════════════════
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
-  
-  # Permitir paquetes no libres
   nixpkgs.config.allowUnfree = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   # ══════════════════════════════════════════════════════════════════════════════
   # SECCIÓN 2: PAQUETES
@@ -248,3 +258,5 @@ in
     };
   };
 }
+
+

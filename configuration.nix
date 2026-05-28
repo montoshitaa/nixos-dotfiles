@@ -12,6 +12,15 @@
   # [1] BOOTLOADER
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [
+    "mem_sleep_default=deep"
+    "acpi_osi=!"
+    "acpi_osi=\"Linux\""
+  ];
+  boot.extraModprobeConfig = ''
+    options xhci_hcd quirks=0x80
+  '';
+
 
   # [2] USUARIO DEL SISTEMA
   users.users.montoshita = {
@@ -24,6 +33,13 @@
 
   # [3] VERSIÓN DEL ESTADO
   system.stateVersion = "26.05";
+
+  systemd.sleep.settings.Sleep = {
+    MemorySleepMode = "deep";
+    AllowSuspend = true;
+    AllowHybridSleep = true;
+    AllowSuspendThenHibernate = true;
+  };
 
   # ═══════════════════════════════════════════════════════════════════════════
   # RED Y CONECTIVIDAD
@@ -130,6 +146,7 @@
 
   # [15] ZSH
   programs.zsh.enable = true;
+  programs.dconf.enable = true;
 
   # ═══════════════════════════════════════════════════════════════════════════
   # PAQUETES Y APLICACIONES DEL SISTEMA
@@ -155,5 +172,9 @@
     zip
     openssh
     docker-compose
+
+    # GTK / GSettings schemas
+    gtk3
+    gsettings-desktop-schemas
   ];
 }
