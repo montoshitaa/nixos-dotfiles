@@ -34,7 +34,6 @@ let
     opencode
     pgmodeler
 
-
     # Multimedia
     spotify
     firefox
@@ -43,7 +42,7 @@ let
     # Networking
     wireshark
     #nmap
-    #curl
+    curl
     #wget
 
     # Herramientas de desarrollo
@@ -151,6 +150,11 @@ in
   # SECCIÓN 2: PAQUETES
   # ══════════════════════════════════════════════════════════════════════════════
   home.packages = userPackages ++ gnomeExtensionPackages;
+
+  home.sessionVariables = {
+    GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-50.1/glib-2.0/schemas:${pkgs.gtk3}/share/gsettings-schemas/gtk+3-3.24.52/glib-2.0/schemas";
+    XDG_DATA_DIRS = ''${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/gsettings-desktop-schemas-50.1:${pkgs.gtk3}/share/gsettings-schemas/gtk+3-3.24.52:${pkgs.gtk4}/share/gsettings-schemas/gtk4-4.22.4:$XDG_DATA_DIRS'';
+  };
 
   # ══════════════════════════════════════════════════════════════════════════════
   # SECCIÓN 3: GIT
