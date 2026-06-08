@@ -33,6 +33,7 @@ let
     #mysql-workbench
     opencode
     pgmodeler
+    projectlibre               #Organización
 
     # Multimedia
     spotify
