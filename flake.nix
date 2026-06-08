@@ -10,11 +10,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # usa el MISMO nixpkgs, no uno aparte
     };
+
+    # Caelestia Shell oficial
+    caelestia.url = "github:caelestia-dots/shell";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux"; # Cámbialo a "aarch64-linux" si tienes ARM
+
+      specialArgs = { inherit inputs; };
 
       modules = [
         ./configuration.nix
@@ -25,6 +29,8 @@
           home-manager.useGlobalPkgs = true;   # comparte pkgs del sistema
           home-manager.useUserPackages = true;  # instala paquetes en el perfil del usuario
           home-manager.backupFileExtension = "backup";
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.sharedModules = [ inputs.caelestia.homeManagerModules.default ];
           home-manager.users.montoshita = import ./home/montoshita.nix;
         }
       ];

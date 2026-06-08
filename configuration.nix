@@ -26,7 +26,7 @@
   users.users.montoshita = {
     isNormalUser = true;
     description  = "Kristel Montoya";
-    extraGroups  = [ "networkmanager" "wheel" "docker" "dialout" "video" "render" "audio" "dialout" ];
+    extraGroups  = [ "networkmanager" "wheel" "docker" "dialout" "video" "render" "audio" ];
     group        = "users";
     shell        = pkgs.zsh;
   };
@@ -90,9 +90,9 @@
   # [8] TECLADO
   services.xserver.xkb = {
     layout  = "us";
-    variant = "intl";
+    variant = "altgr-intl";
   };
-  console.keyMap = "us-acentos";
+  console.keyMap = "us";
 
   # ═══════════════════════════════════════════════════════════════════════════
   # AUDIO Y MULTIMEDIA
@@ -176,5 +176,27 @@
     # GTK / GSettings schemas
     gtk3
     gsettings-desktop-schemas
+  ];
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # HYPRLAND Y WAYLAND
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  # [19] HYPRLAND
+  # Habilitarlo aquí instala xdg-desktop-portal-hyprland y configura la base de Wayland.
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  # [20] POLKIT
+  # Esencial para shells y entornos en Wayland para elevar permisos.
+  security.polkit.enable = true;
+
+  # [21] FUENTES
+  # Requeridas para iconos en Caelestia Shell y utilidades (formato moderno de NixOS 25.05+)
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.ubuntu
   ];
 }
