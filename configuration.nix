@@ -51,7 +51,9 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [];  # Sin puertos expuestos
+    allowedTCPPorts = [
+      8080 8081 9999
+    ];  # Sin puertos expuestos
   };
 
 
@@ -82,6 +84,26 @@
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+
+  # Portales configurados para soportar GNOME y Hyprland evitando conflictos de ScreenCast
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+      gnome = {
+        default = [ "gnome" "gtk" ];
+      };
+      hyprland = {
+        default = [ "hyprland" "gtk" ];
+      };
+    };
+  };
 
   # [7] APLICACIONES GNOME
   services.gnome.core-apps.enable = true;

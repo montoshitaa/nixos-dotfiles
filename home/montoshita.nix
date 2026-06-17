@@ -340,6 +340,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
+    portalPackage = null;
     extraConfig = ''
       # Monitor
       monitor=,preferred,auto,1
