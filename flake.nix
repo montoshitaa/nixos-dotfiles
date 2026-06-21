@@ -1,33 +1,54 @@
 {
-  description = "Configuración NixOS de montoshita";
+  description = "NixOS dotfiles - montoshita";
 
   inputs = {
-    # La fuente principal de paquetes (misma versión que tu sistema)
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home Manager, anclado a la misma versión
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs"; # usa el MISMO nixpkgs, no uno aparte
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux"; # Cámbialo a "aarch64-linux" si tienes ARM
+  outputs = { self, nixpkgs, home-manager, ... }: let
+    system = "x86_64-linux";
 
+    mkSystem = hostPath: nixpkgs.lib.nixosSystem {
+      inherit system;
       modules = [
-        ./configuration.nix
-
-        # Integrar home-manager como módulo del sistema
+        hostPath
         home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;   # comparte pkgs del sistema
-          home-manager.useUserPackages = true;  # instala paquetes en el perfil del usuario
-          home-manager.backupFileExtension = "backup";
-          home-manager.users.montoshita = import ./home/montoshita.nix;
-        }
       ];
     };
+  in {
+    nixosConfigurations.nixos = mkSystem ./hosts/nixos;
+
+    # Agregar más hosts aquí:
+    # nixosConfigurations.laptop = mkSystem ./hosts/laptop;
+
+    templates = {
+      cpp = {
+        path = ./dev-templates/cpp;
+        description = "C/C++ development environment";
+      };
+      java = {
+        path = ./dev-templates/java;
+        description = "Java development environment";
+      };
+      nodejs = {
+        path = ./dev-templates/nodejs;
+        description = "Node.js development environment";
+      };
+      python = {
+        path = ./dev-templates/python;
+        description = "Python development environment";
+      };
+      rust = {
+        path = ./dev-templates/rust;
+        description = "Rust development environment";
+      };
+    };
+
+    formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
   };
 }
