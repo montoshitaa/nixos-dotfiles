@@ -23,8 +23,8 @@ let
     gb = "git branch -a";
     gco = "git checkout";
 
-    nrs = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild switch --flake .#nixos";
-    nrt = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild test --flake .#nixos";
+    nrs = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild switch --flake .#thinkpad-l13";
+    nrt = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild test --flake .#thinkpad-l13";
     nflake = "cd /home/montoshita/nixos-dotfiles && nix flake update";
 
     mci = "mvn clean install";
@@ -100,7 +100,7 @@ in
 
   # ── Terminal ─────────────────────────────────────────────────────
   programs.alacritty = {
-    enable = true;
+    enable = false;
     settings = {
       window = {
         opacity = 0.85;
@@ -120,43 +120,60 @@ in
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
+    settings.user = {
+      name = "Kristel Montoya";
+      email = "kristel.montoya.chaves@est.una.ac.cr";
+    };
     settings = {
-      user.name = gitUser.name;
-      user.email = gitUser.email;
       init.defaultBranch = "main";
       pull.rebase = true;
-      credential.helper = "libsecret";
-      gpg.format = "ssh";
-      user.signingkey = "~/.ssh/id_ed25519.pub";
-      commit.gpgsign = true;
-      gpg.ssh.allowedSignersFile = "~/.config/git/allowed_signers";
     };
   };
-
-  xdg.configFile."git/allowed_signers".text = ''
-    ${gitUser.email} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDvbHIaRrYv9EesUpg0cnwwY9qbvyzmHjGmHANdvgKNw
-  '';
 
   # ── Packages ─────────────────────────────────────────────────────
   home.packages = with pkgs; [
     vscode
-    obsidian
-    mongodb-compass
-    dbeaver-bin
-    docker
-    docker-compose
     antigravity
     opencode
-    pgmodeler
-    spotify
     onlyoffice-desktopeditors
-    wireshark
     curl
-    gh
-    lazygit
     fastfetch
-    tldr
-    arduino-ide
-    mullvad-vpn
+    #mullvad-vpn
   ];
+
+  programs.ssh = {
+    enable = false;
+    enableDefaultConfig = false;
+  };
+
+  programs.zed-editor = {
+    enable = true;
+    enableMcpIntegration = true;
+    userSettings = {
+      auto_save = "on_focus_change";
+      theme = {
+        mode = "system";
+        light = "Zedokai Light";
+        dark = "Zedokai Dark";
+      };
+    };
+    extensions = [
+      "java"
+      "dockerfile"
+      "sql"
+      "nix"
+      "prisma"
+      "docker-compose"
+      "ini"
+      "pylsp"
+      "xml"
+      "zedokai"
+      "codebook"
+      "colored-zed-icons-theme"
+    ];
+    extraPackages = with pkgs; [
+      nixd
+      nil
+    ];
+  };
 }
