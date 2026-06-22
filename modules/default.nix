@@ -10,16 +10,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = [
-    "mem_sleep_default=deep"
-    "acpi_osi=!"
-    "acpi_osi=\"Linux\""
-  ];
-
-  boot.extraModprobeConfig = ''
-    options xhci_hcd quirks=0x80
-  '';
-
   systemd.sleep.settings.Sleep = {
     MemorySleepMode = "deep";
     AllowSuspend = true;
@@ -112,4 +102,5 @@
   # ── KDE Plasma 6 ─────────────────────────────────────────────────
   services.desktopManager.plasma6.enable = true;
   services.displayManager.plasma-login-manager.enable = true;
+  security.pam.services.sddm.enableKwallet = true;
 }

@@ -17,18 +17,30 @@
     shell = pkgs.zsh;
   };
 
-  system.stateVersion = "26.05";
+  system.stateVersion = "26.11";
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    gitFull
-    fzf
+    btop
+    vim
+    wget
+    curl
+    jq
+    yq-go
     ripgrep
-    htop
-    ncdu
+    fd
+    tree
+    pciutils
+    usbutils
+    steam-run
+    appimage-run
+    tldr
+    libsecret
+    dnsmasq
+    file-roller
     unzip
-    zip
-    openssh
+    unrar
+    p7zip
   ];
 
   home-manager = {
