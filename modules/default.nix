@@ -10,16 +10,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = [
-    "mem_sleep_default=deep"
-    "acpi_osi=!"
-    "acpi_osi=\"Linux\""
-  ];
-
-  boot.extraModprobeConfig = ''
-    options xhci_hcd quirks=0x80
-  '';
-
   systemd.sleep.settings.Sleep = {
     MemorySleepMode = "deep";
     AllowSuspend = true;
@@ -54,7 +44,6 @@
   console.keyMap = "us-acentos";
 
   # ── Networking ───────────────────────────────────────────────────
-  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   networking.firewall = {
@@ -112,4 +101,54 @@
   # ── KDE Plasma 6 ─────────────────────────────────────────────────
   services.desktopManager.plasma6.enable = true;
   services.displayManager.plasma-login-manager.enable = true;
+  security.pam.services.sddm.enableKwallet = true;
+
+  # ── Nixpkgs ───────────────────────────────────────────────────────
+  nixpkgs.config.allowUnfree = true;
+
+  # ── User ──────────────────────────────────────────────────────────
+  users.users.montoshita = {
+    isNormalUser = true;
+    description = "Kristel Montoya";
+    extraGroups = [
+      "networkmanager" "wheel" "docker" "dialout"
+      "video" "render" "audio"
+    ];
+    group = "users";
+    shell = pkgs.zsh;
+  };
+
+  # ── System packages ───────────────────────────────────────────────
+  environment.systemPackages = with pkgs; [
+    btop
+    vim
+    wget
+    curl
+    jq
+    yq-go
+    ripgrep
+    fd
+    tree
+    pciutils
+    usbutils
+    steam-run
+    appimage-run
+    tldr
+    libsecret
+    dnsmasq
+    file-roller
+    unzip
+    unrar
+    p7zip
+  ];
+
+  # ── Home Manager ──────────────────────────────────────────────────
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+    users.montoshita = import ../home/montoshita;
+  };
+
+  system.stateVersion = "26.11";
 }
