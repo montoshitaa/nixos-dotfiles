@@ -21,7 +21,7 @@
       ];
     };
   in {
-    nixosConfigurations.nixos = mkSystem ./hosts/nixos;
+    nixosConfigurations.thinkpad-l13 = mkSystem ./hosts/thinkpad-l13;
 
     # Agregar más hosts aquí:
     # nixosConfigurations.laptop = mkSystem ./hosts/laptop;

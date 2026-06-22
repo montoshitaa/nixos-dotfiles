@@ -23,8 +23,8 @@ let
     gb = "git branch -a";
     gco = "git checkout";
 
-    nrs = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild switch --flake .#nixos";
-    nrt = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild test --flake .#nixos";
+    nrs = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild switch --flake .#thinkpad-l13";
+    nrt = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild test --flake .#thinkpad-l13";
     nflake = "cd /home/montoshita/nixos-dotfiles && nix flake update";
 
     mci = "mvn clean install";
@@ -59,7 +59,7 @@ in
     ./plasma.nix
   ];
 
-  home.stateVersion = "26.11";
+  home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
   # ── Shell ────────────────────────────────────────────────────────
