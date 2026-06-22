@@ -25,6 +25,8 @@ let
 
     nrs = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild switch --flake .#thinkpad-l13";
     nrt = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild test --flake .#thinkpad-l13";
+    nrs-desktop = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild switch --flake .#desktop";
+    nrt-desktop = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild test --flake .#desktop";
     nflake = "cd /home/montoshita/nixos-dotfiles && nix flake update";
 
     mci = "mvn clean install";
