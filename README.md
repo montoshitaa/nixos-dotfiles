@@ -13,7 +13,7 @@ Dotfiles y configuración declarativa de NixOS para mis máquinas personales.
 │   └── default.nix            #   boot, locale, network, audio, docker, KDE,
 │                              #   usuario, paquetes base, home-manager
 ├── home/                      # Home Manager (configuración de usuario)
-│   └── montoshita/            #   shell, git, paquetes, plasma theming
+│   └── montoshita/            #   shell, git, paquetes, plasma/
 ├── dev-templates/             # Templates para `nix flake init -t`
 │   ├── cpp/ java/ nodejs/ python/ rust/
 │   └── README.md
@@ -39,7 +39,7 @@ Dotfiles y configuración declarativa de NixOS para mis máquinas personales.
 
 ### ¿Querés cambiar la apariencia de KDE Plasma?
 
-→ **`home/montoshita/plasma.nix`** — temas, widgets, KWin, splash screen.
+→ **`home/montoshita/plasma/`** — configuración vía Plasma Manager (temas, KWin, panel, atajos, fuentes, etc.).
 
 ### ¿Querés agregar una máquina nueva?
 

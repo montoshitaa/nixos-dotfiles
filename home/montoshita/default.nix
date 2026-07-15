@@ -57,10 +57,6 @@ let
   };
 in
 {
-  imports = [
-    ./plasma.nix
-  ];
-
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
@@ -98,24 +94,6 @@ in
   programs.bash = {
     enable = true;
     shellAliases = shellAliases;
-  };
-
-  # ── Terminal ─────────────────────────────────────────────────────
-  programs.alacritty = {
-    enable = false;
-    settings = {
-      window = {
-        opacity = 0.85;
-        blur = true;
-        padding = {
-          x = 10;
-          y = 10;
-        };
-      };
-      font = {
-        size = 11.0;
-      };
-    };
   };
 
   # ── Git ──────────────────────────────────────────────────────────
