@@ -2,7 +2,7 @@
 
 Esta guía explica cómo agregar una nueva máquina (por ejemplo, una computadora de escritorio) con diferente hardware al repositorio de dotfiles.
 
-La configuración común (usuario, paquetes base, home-manager, KDE, etc.) ya está en `modules/default.nix`. Cada host solo define su hardware y hostname.
+La configuración común (usuario, paquetes base, home-manager, KDE Plasma via Plasma Manager, etc.) ya está en `modules/default.nix`. Cada host solo define su hardware y hostname.
 
 ## Requisitos previos
 
