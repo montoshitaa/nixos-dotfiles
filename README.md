@@ -10,15 +10,14 @@ Dotfiles y configuración declarativa de NixOS para mis máquinas personales.
 ├── hosts/                     # Configuración por máquina
 │   └── thinkpad-l13/          #   default.nix + hardware-configuration.nix
 ├── modules/                   # Configuración compartida entre todos los hosts
-│   └── default.nix            #   boot, locale, network, audio, docker, KDE,
+│   └── default.nix            #   boot, locale, network, audio, docker, COSMIC,
 │                              #   usuario, paquetes base, home-manager
 ├── home/                      # Home Manager (configuración de usuario)
-│   └── montoshita/            #   shell, git, paquetes, plasma/
+│   └── montoshita/            #   shell, git, paquetes
 ├── dev-templates/             # Templates para `nix flake init -t`
 │   ├── cpp/ java/ nodejs/ python/ rust/
 │   └── README.md
 ├── docs/                      # Documentación
-├── kde-themes/                # Temas de KDE Plasma empaquetados
 ├── wallpapers/                # Fondos de pantalla
 └── README.md
 ```
@@ -37,9 +36,9 @@ Dotfiles y configuración declarativa de NixOS para mis máquinas personales.
 
 → **`home/montoshita/default.nix`** — configuración de Home Manager.
 
-### ¿Querés cambiar la apariencia de KDE Plasma?
+### ¿Querés cambiar la apariencia de COSMIC?
 
-→ **`home/montoshita/plasma/`** — configuración vía Plasma Manager (temas, KWin, panel, atajos, fuentes, etc.).
+→ Los ajustes de COSMIC se configuran desde la aplicación de Configuración del sistema o mediante dconf.
 
 ### ¿Querés agregar una máquina nueva?
 

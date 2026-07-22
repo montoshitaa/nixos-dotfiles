@@ -107,17 +107,23 @@
   services.flatpak.enable = true;
 
   # ── Firefox ──────────────────────────────────────────────────────
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "widget.gtk.libadwaita-colors.enabled" = false;
+    };
+  };
 
   # ── System programs ──────────────────────────────────────────────
   programs.zsh.enable = true;
   programs.dconf.enable = true;
   services.lact.enable = true;
 
-  # ── KDE Plasma 6 ─────────────────────────────────────────────────
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.plasma-login-manager.enable = true;
-  security.pam.services.sddm.enableKwallet = true;
+  # ── COSMIC Desktop ──────────────────────────────────────────────
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+  services.system76-scheduler.enable = true;
+  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = "1";
 
   # ── Nixpkgs ───────────────────────────────────────────────────────
   nixpkgs.config.allowUnfree = true;
@@ -158,7 +164,6 @@
     p7zip
     bluez
     pavucontrol
-    kdePackages.discover
   ];
 
   # ── Home Manager ──────────────────────────────────────────────────
@@ -169,5 +174,5 @@
     users.montoshita = import ../home/montoshita;
   };
 
-  system.stateVersion = "26.11";
+  system.stateVersion = "26.05";
 }

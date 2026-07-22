@@ -2,7 +2,7 @@
 
 Esta guía explica cómo agregar una nueva máquina (por ejemplo, una computadora de escritorio) con diferente hardware al repositorio de dotfiles.
 
-La configuración común (usuario, paquetes base, home-manager, KDE Plasma via Plasma Manager, etc.) ya está en `modules/default.nix`. Cada host solo define su hardware y hostname.
+La configuración común (usuario, paquetes base, home-manager, COSMIC Desktop, etc.) ya está en `modules/default.nix`. Cada host solo define su hardware y hostname.
 
 ## Requisitos previos
 
@@ -40,7 +40,7 @@ Creá el archivo con el contenido generado en el Paso 1. Revisá que:
 
 ## Paso 4: Crear `hosts/<nombre>/default.nix`
 
-El archivo es **mínimo** porque toda la configuración común (usuario, paquetes, home-manager, KDE, etc.) se hereda de `modules/default.nix`. Solo necesitás imports, hostname y paquetes o configuraciones específicas del host:
+El archivo es **mínimo** porque toda la configuración común (usuario, paquetes, home-manager, COSMIC, etc.) se hereda de `modules/default.nix`. Solo necesitás imports, hostname y paquetes o configuraciones específicas del host:
 
 ```nix
 # hosts/desktop/default.nix
