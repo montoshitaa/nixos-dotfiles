@@ -51,6 +51,21 @@
     allowedTCPPorts = [ ];
   };
 
+  # ── Bluetooth ────────────────────────────────────────────────────
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  services.blueman.enable = true;
+
+  hardware.bluetooth.settings = {
+    General = {
+      Experimental = true;
+    };
+  };
+
   # ── Security ─────────────────────────────────────────────────────
   security.sudo.wheelNeedsPassword = false;
   security.rtkit.enable = true;
@@ -67,13 +82,13 @@
 
   # ── Audio ────────────────────────────────────────────────────────
   services.pulseaudio.enable = false;
-
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-  };
+    wireplumber.enable = true;
+};
 
   # ── Docker ───────────────────────────────────────────────────────
   virtualisation.docker.enable = true;
@@ -97,6 +112,7 @@
   # ── System programs ──────────────────────────────────────────────
   programs.zsh.enable = true;
   programs.dconf.enable = true;
+  services.lact.enable = true;
 
   # ── KDE Plasma 6 ─────────────────────────────────────────────────
   services.desktopManager.plasma6.enable = true;
@@ -140,6 +156,9 @@
     unzip
     unrar
     p7zip
+    bluez
+    pavucontrol
+    kdePackages.discover
   ];
 
   # ── Home Manager ──────────────────────────────────────────────────
@@ -150,5 +169,5 @@
     users.montoshita = import ../home/montoshita;
   };
 
-  system.stateVersion = "26.11";
+  system.stateVersion = "26.05";
 }

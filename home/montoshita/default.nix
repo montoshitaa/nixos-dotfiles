@@ -23,11 +23,11 @@ let
     gb = "git branch -a";
     gco = "git checkout";
 
-    nrs = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild switch --flake .#thinkpad-l13";
-    nrt = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild test --flake .#thinkpad-l13";
-    nrs-desktop = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild switch --flake .#desktop";
-    nrt-desktop = "cd /home/montoshita/nixos-dotfiles && sudo nixos-rebuild test --flake .#desktop";
-    nflake = "cd /home/montoshita/nixos-dotfiles && nix flake update";
+    nrs = "cd /home/montoshita/dotfiles && sudo nixos-rebuild switch --flake .#thinkpad-l13";
+    nrt = "cd /home/montoshita/dotfiles && sudo nixos-rebuild test --flake .#thinkpad-l13";
+    nrs-desktop = "cd /home/montoshita/dotfiles && sudo nixos-rebuild switch --flake .#desktop";
+    nrt-desktop = "cd /home/montoshita/dotfiles && sudo nixos-rebuild test --flake .#desktop";
+    nflake = "cd /home/montoshita/dotfiles && nix flake update";
 
     mci = "mvn clean install";
     mct = "mvn clean test";
@@ -57,10 +57,6 @@ let
   };
 in
 {
-  imports = [
-    ./plasma.nix
-  ];
-
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
@@ -100,23 +96,7 @@ in
     shellAliases = shellAliases;
   };
 
-  # ── Terminal ─────────────────────────────────────────────────────
-  programs.alacritty = {
-    enable = false;
-    settings = {
-      window = {
-        opacity = 0.85;
-        blur = true;
-        padding = {
-          x = 10;
-          y = 10;
-        };
-      };
-      font = {
-        size = 11.0;
-      };
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
 
   # ── Git ──────────────────────────────────────────────────────────
   programs.git = {
@@ -129,6 +109,7 @@ in
     settings = {
       init.defaultBranch = "main";
       pull.rebase = true;
+      credential.helper = "libsecret";
     };
   };
 
@@ -178,4 +159,5 @@ in
       nil
     ];
   };
+
 }
