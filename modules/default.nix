@@ -169,5 +169,5 @@
     users.montoshita = import ../home/montoshita;
   };
 
-  system.stateVersion = "26.11";
+  system.stateVersion = "26.05";
 }
