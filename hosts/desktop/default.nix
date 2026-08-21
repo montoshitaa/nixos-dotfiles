@@ -19,4 +19,10 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+
+  services.lact.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    steam-run
+  ];
 }

@@ -51,10 +51,6 @@ let
     largefile = "du -sh * | sort -rh | head";
   };
 
-  gitUser = {
-    name = "montoshitaa";
-    email = "kristel.montoya.chaves@est.una.ac.cr";
-  };
 in
 {
   home.stateVersion = "26.05";
@@ -96,8 +92,6 @@ in
     shellAliases = shellAliases;
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   # ── Git ──────────────────────────────────────────────────────────
   programs.git = {
     enable = true;
@@ -116,11 +110,13 @@ in
   # ── Packages ─────────────────────────────────────────────────────
   home.packages = with pkgs; [
     vscode
-    antigravity
+    antigravity-ide
     opencode
     onlyoffice-desktopeditors
     curl
     fastfetch
+    dosbox
+    dbeaver-bin
     #mullvad-vpn
   ];
 

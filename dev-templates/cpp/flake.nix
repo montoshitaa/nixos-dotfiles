@@ -38,4 +38,7 @@
             echo ""
             echo "📝 Quick Commands:"
             echo "  cmake -B build && cd build && make → Compilar con CMake"
-            echo "  gcc -o
+            echo "  gcc -o programa main.c     → Compilar con GCC"
+            echo "  clang -o programa main.c   → Compilar con Clang"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          '';

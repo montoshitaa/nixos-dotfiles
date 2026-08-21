@@ -18,7 +18,6 @@
   };
 
   hardware.enableRedistributableFirmware = true;
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault true;
 
   # ── Locale ───────────────────────────────────────────────────────
   time.timeZone = "America/Costa_Rica";
@@ -67,7 +66,7 @@
   };
 
   # ── Security ─────────────────────────────────────────────────────
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
   security.rtkit.enable = true;
 
   # ── Nix ──────────────────────────────────────────────────────────
@@ -88,7 +87,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     wireplumber.enable = true;
-};
+  };
 
   # ── Docker ───────────────────────────────────────────────────────
   virtualisation.docker.enable = true;
@@ -117,7 +116,6 @@
   # ── System programs ──────────────────────────────────────────────
   programs.zsh.enable = true;
   programs.dconf.enable = true;
-  services.lact.enable = true;
 
   # ── COSMIC Desktop ──────────────────────────────────────────────
   services.desktopManager.cosmic.enable = true;
@@ -153,7 +151,6 @@
     tree
     pciutils
     usbutils
-    steam-run
     appimage-run
     tldr
     libsecret
@@ -162,7 +159,6 @@
     unzip
     unrar
     p7zip
-    bluez
     pavucontrol
   ];
 

@@ -8,7 +8,8 @@ Dotfiles y configuración declarativa de NixOS para mis máquinas personales.
 ├── flake.nix                  # Entrada principal: inputs, outputs, hosts
 ├── flake.lock                 # Versiones fijadas de dependencias
 ├── hosts/                     # Configuración por máquina
-│   └── thinkpad-l13/          #   default.nix + hardware-configuration.nix
+│   ├── thinkpad-l13/          #   default.nix + hardware-configuration.nix
+│   └── desktop/               #   default.nix + hardware-configuration.nix
 ├── modules/                   # Configuración compartida entre todos los hosts
 │   └── default.nix            #   boot, locale, network, audio, docker, COSMIC,
 │                              #   usuario, paquetes base, home-manager
@@ -72,6 +73,7 @@ nflake
 | Host | Arquitectura | Tipo |
 |------|--------------|------|
 | `thinkpad-l13` | `x86_64-linux` | Laptop (ThinkPad L13) |
+| `desktop` | `x86_64-linux` | Desktop (AMD) |
 
 ## Templates disponibles
 
@@ -85,6 +87,6 @@ nix flake init -t .#rust      # Rust con rust-analyzer
 
 ## Notas
 
-- El system stateVersion actual es `26.11`
+- El system stateVersion actual es `26.05`
 - Se usa `nixos-unstable` como canal
 - El formatter del flake es `nixfmt`
